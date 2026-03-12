@@ -25,10 +25,14 @@ class TripParser:
 
     @staticmethod
     def get_thermal_consumption(start, end):
+        if start[LEVEL_FUEL] is None or end[LEVEL_FUEL] is None:
+            return [0, 0]
         return [0, start[LEVEL_FUEL] - end[LEVEL_FUEL]]
 
     @staticmethod
     def get_elec_consumption(start, end):
+        if start[LEVEL] is None or end[LEVEL] is None:
+            return [0, 0]
         return [start[LEVEL] - end[LEVEL], 0]
 
     @staticmethod
